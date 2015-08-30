@@ -49,12 +49,11 @@ public class SendButtonScript : MonoBehaviour {
 		string ipadr = getIpadr ();
 
 		client = new UdpClient ();
-		client.Connect (ipadr, port); // TODO: do not use Connect()
 
 		// send
 		string sendstr = IFmsg.text + System.Environment.NewLine;
 		byte[] data = ASCIIEncoding.ASCII.GetBytes (sendstr);
-		client.Send (data, data.Length);
+		client.Send (data, data.Length, ipadr, port);
 
 		// receive
 		client.Client.ReceiveTimeout = 2000; // msec
