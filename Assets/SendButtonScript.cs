@@ -44,17 +44,19 @@ public class SendButtonScript : MonoBehaviour {
 		return res;
 	}
 
-	void udpSend() {
+	void procComm() {
 		port = getPort();
 		string ipadr = getIpadr ();
 
 		client = new UdpClient ();
 		client.Connect (ipadr, port);
 
+		// send
 		string sendstr = IFmsg.text + System.Environment.NewLine;
 		byte[] data = ASCIIEncoding.ASCII.GetBytes (sendstr);
 		client.Send (data, data.Length);
 
+		// receive
 		IPEndPoint anyIP = new IPEndPoint(IPAddress.Any, 0);
 		data = client.Receive(ref anyIP);
 		string text = Encoding.ASCII.GetString(data);
@@ -65,6 +67,6 @@ public class SendButtonScript : MonoBehaviour {
 	
 	public void onClick() {
 		Debug.Log ("on click");
-		udpSend ();
+		procComm ();
 	}
 }
