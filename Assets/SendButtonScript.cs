@@ -58,9 +58,15 @@ public class SendButtonScript : MonoBehaviour {
 		// receive
 		client.Client.ReceiveTimeout = 2000; // msec
 		IPEndPoint remoteIP = new IPEndPoint(IPAddress.Any, 0);
-		data = client.Receive (ref remoteIP);
-		string text = Encoding.ASCII.GetString(data);
-		lastRcvd = text;				
+		lastRcvd = "";
+		try {
+			data = client.Receive (ref remoteIP);
+			if (data.Length > 0) {
+				string text = Encoding.ASCII.GetString (data);
+				lastRcvd = text;	
+			}
+		} catch (Exception err) {
+		}
 
 		client.Close ();
 	}
