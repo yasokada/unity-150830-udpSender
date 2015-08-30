@@ -49,7 +49,7 @@ public class SendButtonScript : MonoBehaviour {
 		string ipadr = getIpadr ();
 
 		client = new UdpClient ();
-		client.Connect (ipadr, port);
+		client.Connect (ipadr, port); // TODO: do not use Connect()
 
 		// send
 		string sendstr = IFmsg.text + System.Environment.NewLine;
@@ -57,6 +57,7 @@ public class SendButtonScript : MonoBehaviour {
 		client.Send (data, data.Length);
 
 		// receive
+		client.Client.ReceiveTimeout = 2000; // msec
 		IPEndPoint remoteIP = new IPEndPoint(IPAddress.Any, 0);
 		data = client.Receive (ref remoteIP);
 		string text = Encoding.ASCII.GetString(data);

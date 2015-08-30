@@ -916,6 +916,7 @@ MonoBehaviour:
   IFipadr: {fileID: 2074070992}
   IFport: {fileID: 171143156}
   IFmsg: {fileID: 1871628147}
+  rcvText: {fileID: 1879548657}
 --- !u!1 &1759514886
 GameObject:
   m_ObjectHideFlags: 0
@@ -994,7 +995,7 @@ GameObject:
   - 114: {fileID: 1871628148}
   - 114: {fileID: 1871628147}
   m_Layer: 5
-  m_Name: IF_msg
+  m_Name: IF_sendMsg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1016,8 +1017,8 @@ RectTransform:
   m_RootOrder: 3
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -4.80000019, y: 8.10000038}
-  m_SizeDelta: {x: 322.700012, y: 30}
+  m_AnchoredPosition: {x: -3.59998703, y: 8.10000038}
+  m_SizeDelta: {x: 306.899994, y: 30}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1871628147
 MonoBehaviour:
@@ -1116,7 +1117,7 @@ GameObject:
   - 222: {fileID: 1879548658}
   - 114: {fileID: 1879548657}
   m_Layer: 5
-  m_Name: T_rcvdString
+  m_Name: T_rcvdMsg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1136,7 +1137,7 @@ RectTransform:
   m_RootOrder: 4
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -80, y: -38.5}
+  m_AnchoredPosition: {x: -71.3000031, y: -36.9000015}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1879548657
@@ -1161,8 +1162,8 @@ MonoBehaviour:
     m_MaxSize: 40
     m_Alignment: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: New Text
 --- !u!222 &1879548658
