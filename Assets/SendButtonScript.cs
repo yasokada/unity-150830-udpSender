@@ -18,10 +18,19 @@ public class SendButtonScript : MonoBehaviour {
 	public InputField IFipadr;
 	public InputField IFport;
 	public InputField IFmsg; // message to send
+	public Text rcvText; // recieved text
+
+	UdpClient client;
+	int port;
+	string lastRcvd;
 
 	void Start() {
 		IFipadr.text = "192.168.10.";
 		IFport.text = "6000";
+	}
+
+	void Update() {
+		rcvText.text = lastRcvd;
 	}
 
 	string getIpadr() {
@@ -36,8 +45,7 @@ public class SendButtonScript : MonoBehaviour {
 	}
 
 	void udpSend() {
-		UdpClient client;
-		int port = getPort();
+		port = getPort();
 		string ipadr = getIpadr ();
 
 		client = new UdpClient ();
@@ -46,9 +54,15 @@ public class SendButtonScript : MonoBehaviour {
 		string sendstr = IFmsg.text + System.Environment.NewLine;
 		byte[] data = ASCIIEncoding.ASCII.GetBytes (sendstr);
 		client.Send (data, data.Length);
+
+		IPEndPoint anyIP = new IPEndPoint(IPAddress.Any, 0);
+		data = client.Receive(ref anyIP);
+		string text = Encoding.ASCII.GetString(data);
+		lastRcvd = text;				
+
 		client.Close ();
 	}
-
+	
 	public void onClick() {
 		Debug.Log ("on click");
 		udpSend ();
