@@ -57,8 +57,8 @@ public class SendButtonScript : MonoBehaviour {
 		client.Send (data, data.Length);
 
 		// receive
-		IPEndPoint anyIP = new IPEndPoint(IPAddress.Any, 0);
-		data = client.Receive(ref anyIP);
+		IPEndPoint remoteIP = new IPEndPoint(IPAddress.Any, 0);
+		data = client.Receive (ref remoteIP);
 		string text = Encoding.ASCII.GetString(data);
 		lastRcvd = text;				
 
